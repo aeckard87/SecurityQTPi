@@ -1,0 +1,4 @@
+*.pyc
+RPi/*
+config.yaml
+.DS_Store

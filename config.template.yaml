@@ -1,0 +1,29 @@
+mqtt:
+    host: 127.0.0.1 #ip of where MQTT Broker is running, maintain 127.0.0.1 if running broker in the same place as security app
+    port: 1883 #required MQTT port is 1883
+    user: username #change username to what you setup when you ran "sudo mosquitto_passwd -c /etc/mosquitto/pwfile [YOUR USER NAME HERE]"
+    password: password #change password to what you setup when you ran "sudo mosquitto_passwd -c /etc/mosquitto/pwfile [username]"
+    discovery: true #defaults to false, comment to disable home-assistant discovery
+    discovery_prefix: homeassistant #maintain homeassistant as discovery_prefix if you want home-assistant to discover this service
+
+accesspoints:
+    -
+        id: Zone1 #Descriptive text, this will be used as TOPIC
+        name: test # Not required, if empty it defaults to an unsanitized version of the id paramater
+        pin: 15 #PIN_NUM
+        relay: 0 # COMING SOON - add abillity to relay to GPIO
+        state_mode: normally_closed #defaults to normally open, comment this line to switch
+        #invert_relay: true #defaults to false, uncomment to turn relay pin on by default
+
+        # If you'd like to use your own topics, set discovery to false and update fields with format: "[discover_prefix]/cover/[topic]" and "[discover_prefix]/cover/[topic]/set"
+        state_topic: "homeassistant/cover/Zone1"
+        #command_topic: "homeassistant/cover/Zone1/set"
+    -
+        id: Zone2
+        name:
+        pin: 17
+        relay: 0
+        state_mode: normally_closed
+        #invert_relay: true #defaults to false, uncomment to turn relay pin on by default
+        state_topic: "homeassistant/cover/Zone2"
+        #command_topic: "homeassistant/cover/Zone2/set"
