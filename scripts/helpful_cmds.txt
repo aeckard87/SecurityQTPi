@@ -1,0 +1,15 @@
+# SecurityQTPi 
+systemctl status securityqtpi@pi.service #Outputs logs
+sudo systemctl stop securityqtpi@pi.service #Stops the app from running can resume with start 
+sudo systemctl --system daemon-reload
+
+# MQTT
+sudo mosquitto -c /etc/mosquitto/mosquitto.conf -v -d # start the MQTT broker in deamon 
+
+systemctl status mosquitto #Outputs logs
+
+mosquitto_sub -d -u USERNAME -P PASSWORD -t "homeassistant/cover/Zone1/state" # Good for watching subscription and testing MQTT user/pass works
+
+sudo mosquitto_passwd -c /etc/mosquitto/pwfile USERNAME # Change MQTT Broker password, you will need to restart the MQTT Service to pickup the username/password change.
+
+mosquitto_pub -d -u username -P password -t "homeassistant/cover/Zone1/state" -m "open" # You can publish an open message that will make Home-Assistant think something has opened. This helps with setting up automations in HA so you don't have to constantly open/close doors and windows on setup.
