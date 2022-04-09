@@ -1,11 +1,12 @@
 # SecurityQTPi 
-to run the autostart_systemd.sh script cd into the directory where the script is and type:
+- The autostart_systemd.sh script needs to be in the same directory as your securityqtpi@pi.service file.
+- to run the autostart_systemd.sh script cd into the directory where the script is and type:
     ./autostart_systemd.sh
     
-autostart_systemd.sh is a one time script that sets up the config to systemctl.
+- autostart_systemd.sh is a one time script that sets up the config to systemctl.
 
-once ^ this is done then you will want to start the service:
-sudo systemctl start securityqtpi@pi.service
+- once ^ this is done then you will want to start the service:
+    sudo systemctl start securityqtpi@pi.service
 
 Other systemctl cmds:
 sudo systemctl status securityqtpi@pi.service #Outputs logs
